@@ -36,8 +36,8 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        git remote set-url origin https://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@github.com/${{ secrets.GH_USERNAME }}/ScrappingConstantDeltarune.git
+        git remote set-url origin https://${{ secrets.GH_TOKEN }}@github.com/${{ secrets.GH_USERNAME }}/ScrappingConstantDeltarune.git
         git add data.json
         git commit -m "Update data.json with new scraping data" || echo "No changes to commit"
-        git push origin HEAD:master -v
+        git push origin HEAD:main
 
