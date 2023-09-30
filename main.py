@@ -1,10 +1,7 @@
 import json
 import requests
 from bs4 import BeautifulSoup
-from time import sleep
-import json
 from datetime import datetime
-import time
 
 
 def scrape_data(url):
@@ -37,15 +34,12 @@ def save_to_json(data):
     with open('data.json', 'w', encoding='utf-8') as f:
         json.dump(existing_data, f, ensure_ascii=False, indent=4)
 
-while True:
-    players, plays, active_users = get_data()
+players, plays, active_users = get_data()
 
-    # Save data to JSON
-    data = {
-        "players": players,
-        "plays": plays,
-        "active_users": active_users
-    }
-    save_to_json(data)
-
-    time.sleep(60)
+# Save data to JSON
+data = {
+    "players": players,
+    "plays": plays,
+    "active_users": active_users
+}
+save_to_json(data)
