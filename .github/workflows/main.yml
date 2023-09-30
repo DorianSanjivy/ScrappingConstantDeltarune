@@ -33,5 +33,6 @@ jobs:
     - name: Commit and push changes
       run: |
         git add data.json # Assurez-vous que cela correspond au nom de votre fichier JSON
+        git pull origin master
         git commit -m "Update data.json with new scraping data" || echo "No changes to commit"
         git push https://${{ secrets.GH_USERNAME }}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.GH_USERNAME }}/ScrappingConstantDeltarune.git
