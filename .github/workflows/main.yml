@@ -30,6 +30,9 @@ jobs:
     - name: Run scraper
       run: python main.py # Remplacez "votre_script.py" par le nom de votre script
 
+    - name: Display collected data
+      run: cat data.json
+
     - name: Commit and push changes
       run: |
         git add data.json # Assurez-vous que cela correspond au nom de votre fichier JSON
