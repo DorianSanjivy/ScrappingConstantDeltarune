@@ -1,6 +1,7 @@
 name: Scraping Job
 
 on:
+  push:
   schedule:
     - cron: '*/5 * * * *' # Ceci exécutera le job toutes les heures. Modifiez selon vos besoins.
 
