@@ -3,8 +3,8 @@ name: Scraping Job
 on:
   push:
   schedule:
-    - cron: '*/5 * * * *' # Ceci exécutera le job toutes les heures. Modifiez selon vos besoins. o
-
+    - cron: '*/5 * * * *' 
+    
 jobs:
   scrape:
     runs-on: ubuntu-latest
@@ -23,22 +23,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Configure Git
-      run: |
-        git config --global user.name "${{ secrets.GH_USERNAME }}"
-        git config --global user.email "${{ secrets.GH_USERNAME }}@users.noreply.github.com"
-
     - name: Run scraper
       run: python main.py # Remplacez "votre_script.py" par le nom de votre script
 
     - name: Display collected data
       run: cat data.json
-
-    - name: Push changes
-      run: |
-        git remote set-url origin https://${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git
-        git add data.json
-        git commit -m "Update data.json with new scraping data" || echo "No changes to commit"
-        git push origin HEAD:main -v
     
   
